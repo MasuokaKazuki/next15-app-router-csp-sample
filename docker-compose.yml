@@ -1,0 +1,20 @@
+services:
+  app:
+    container_name: app
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    tty: true
+    ports:
+      - "3000:3000"
+    develop:
+      watch:
+        - action: rebuild
+          path: package.json
+        - action: sync
+          path: .
+          target: /usr/src/app
+          ignore:
+            - node_modules/
+    volumes:
+      - ./:/usr/src/app
