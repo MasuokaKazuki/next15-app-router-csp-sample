@@ -7,14 +7,6 @@ services:
     tty: true
     ports:
       - "3000:3000"
-    develop:
-      watch:
-        - action: rebuild
-          path: package.json
-        - action: sync
-          path: .
-          target: /usr/src/app
-          ignore:
-            - node_modules/
     volumes:
       - ./:/usr/src/app
+      - /usr/src/app/node_modules
